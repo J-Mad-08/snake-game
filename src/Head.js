@@ -5,7 +5,7 @@ class Head {
     el.appendChild(this.node)
 
     this.currentDirection = "right"
-    this.SPEED = 250
+    this.SPEED = 200
 
     this.node.style.top = 0
     this.node.style.left = 0
@@ -15,7 +15,7 @@ class Head {
 
   move() {
     const head = this.node
-    const direction = this.currentDirection
+    let direction = this.currentDirection
 
     let topPosition = Number(head.style.top.replace("px", ""))
     let leftPosition = Number(head.style.left.replace("px", ""))
@@ -36,6 +36,20 @@ class Head {
         break
       default:
         throw new Error("")
+    }
+
+    if (
+      topPosition < 0 ||
+      topPosition >= 700 ||
+      leftPosition >= 700 ||
+      leftPosition < 0
+    ) {
+      console.log("Triggered")
+      Number(head.style.top.replace("px", ""))
+      Number(head.style.left.replace("px", ""))
+      head.style.top = 0
+      head.style.left = 0
+      this.currentDirection = "right"
     }
 
     setTimeout(this.move.bind(this), this.SPEED)

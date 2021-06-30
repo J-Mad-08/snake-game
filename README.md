@@ -25,7 +25,7 @@ Because each of the files is included in a script tag on index.html, these three
 1. Head Class
 
    - [x] Make the head of the snake be able to turn based on the arrow keys
-   - [ ] When the head of the snake reaches a border, end the game
+   - [x] When the head of the snake reaches a border, end the game
 
 1. Apple Class
 
