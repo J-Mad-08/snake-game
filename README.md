@@ -2,13 +2,14 @@
 
 ## Summary
 
-Snake is one of the [first video game genres](https://en.wikipedia.org/wiki/Snake_(video_game_genre)). We will be creating a browser based version using our understanding of OOP and DOM manipulation. This will be your first dynamic, single-page app. It's a game, so have some fun and get creative once the basic functionality is created!
+Snake is one of the [first video game genres](<https://en.wikipedia.org/wiki/Snake_(video_game_genre)>). We will be creating a browser based version using our understanding of OOP and DOM manipulation. This will be your first dynamic, single-page app. It's a game, so have some fun and get creative once the basic functionality is created!
 
 ## Learning objectives
 
 - Using JavaScript to change the look and behavior of the DOM
 - React to user input
 - Utilize object-oriented programming
+
 ## Challenges
 
 ### Building Snake
@@ -23,7 +24,7 @@ Because each of the files is included in a script tag on index.html, these three
 
 1. Head Class
 
-   - [ ] Make the head of the snake be able to turn based on the arrow keys
+   - [x] Make the head of the snake be able to turn based on the arrow keys
    - [ ] When the head of the snake reaches a border, end the game
 
 1. Apple Class
