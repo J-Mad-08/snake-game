@@ -1,4 +1,4 @@
-class Head {
+export class Head {
   constructor(el) {
     this.node = document.createElement("div")
     this.node.setAttribute("id", "head")
