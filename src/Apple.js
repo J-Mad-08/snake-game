@@ -5,7 +5,6 @@
 - [ ] Another apple should appear on the screen
 - [ ] The apple should not appear on the snake
 */
-
 export class Apple {
   constructor(el) {
     this.node = document.createElement("img")
@@ -15,10 +14,9 @@ export class Apple {
     el.appendChild(this.node)
 
     const randPos = Math.floor((Math.random() * 700) / 50) * 50
-    //console.log(randPos, "rs") //is working
 
-    this.node.style.left = randPos
-    this.node.style.top = randPos
+    this.node.style.left = `${randPos}px`
+    this.node.style.top = `${randPos}px`
     console.log(randPos, "RS")
 
     //apple picking

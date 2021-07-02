@@ -2,6 +2,7 @@ export class Head {
   constructor(el) {
     this.node = document.createElement("div")
     this.node.setAttribute("id", "head")
+
     el.appendChild(this.node)
 
     this.currentDirection = "right"
