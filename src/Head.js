@@ -1,3 +1,5 @@
+import { Apple } from "./Apple.js"
+
 export class Head {
   constructor(el, position) {
     this.node = document.createElement("div")
@@ -10,7 +12,6 @@ export class Head {
 
     this.node.style.top = 0
     this.node.style.left = 0
-    console.log(position, "pos in cx")
 
     setTimeout(this.move.bind(this, el, position), this.SPEED)
   }
@@ -22,9 +23,19 @@ export class Head {
     let y = Number(head.style.top.replace("px", ""))
     let x = Number(head.style.left.replace("px", ""))
 
+    // Does our Apple position equal our Snake
     if (x === position && y === position) {
       const appleImg = document.getElementById("apple")
       el.removeChild(appleImg)
+      // Create a new random position to place our Apple
+      let randPos = Math.floor((Math.random() * 700) / 50) * 50
+      //if next apple is on snake, call random again
+      while (x === randPos && y === randPos) {
+        randPos = Math.floor((Math.random() * 700) / 50) * 50
+      }
+      new Apple(el, randPos)
+      // Let our Head know of the new Apple position
+      position = randPos
     }
 
     // Bonus: Head shouldn't be able to go backwards
@@ -46,7 +57,6 @@ export class Head {
     }
 
     if (y < 0 || y >= 700 || x >= 700 || x < 0) {
-      console.log("Triggered")
       Number(head.style.top.replace("px", ""))
       Number(head.style.left.replace("px", ""))
       head.style.top = 0
@@ -54,7 +64,6 @@ export class Head {
       this.currentDirection = "right"
     }
 
-    console.log(position, "position in move")
     setTimeout(this.move.bind(this, el, position), this.SPEED)
   }
 }
