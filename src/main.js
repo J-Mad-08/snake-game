@@ -1,3 +1,7 @@
+import { Head } from "./Head.js"
+// import { Body } from "./Body.js"
+import { Apple } from "./Apple.js"
+
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.querySelector("body")
   const board = document.querySelector("#board")

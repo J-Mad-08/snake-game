@@ -6,24 +6,24 @@
 - [ ] The apple should not appear on the snake
 */
 
-class Apple {
+export class Apple {
   constructor(el) {
-    this.node = document.createElement("img");
-    this.node.setAttribute("id", "apple");
-    this.node.setAttribute("src", "src/assets/apple.jpg");
+    this.node = document.createElement("img")
+    this.node.setAttribute("id", "apple")
+    this.node.setAttribute("src", "src/assets/apple.jpg")
 
-    el.appendChild(this.node);
+    el.appendChild(this.node)
 
-    const randPos = Math.floor((Math.random() * 700) / 50) * 50;
+    const randPos = Math.floor((Math.random() * 700) / 50) * 50
     //console.log(randPos, "rs") //is working
 
-    this.node.style.left = randPos;
-    this.node.style.top = randPos;
-    console.log(randPos, "RS");
+    this.node.style.left = randPos
+    this.node.style.top = randPos
+    console.log(randPos, "RS")
 
     //apple picking
-    const appleImg = document.getElementById("apple");
-    console.log(appleImg);
+    const appleImg = document.getElementById("apple")
+    console.log(appleImg)
     //appleImg.style.margin
     //delete appleImg => grabbing img so that works
   }
