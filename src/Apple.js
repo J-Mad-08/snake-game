@@ -1,12 +1,12 @@
-class Apple {
-  constructor(el) {
-    this.node = document.createElement('img');
-    this.node.setAttribute('id', 'apple');
-    this.node.setAttribute('src', 'src/assets/apple.jpg');
+export class Apple {
+  constructor(el, position) {
+    this.node = document.createElement("img")
+    this.node.setAttribute("id", "apple")
+    this.node.setAttribute("src", "src/assets/cute-apple.png")
 
-    el.appendChild(this.node);
+    el.appendChild(this.node)
 
-    this.node.style.left = 300;
-    this.node.style.top = 300;
+    this.node.style.left = `${position}px`
+    this.node.style.top = `${position}px`
   }
 }

@@ -2,8 +2,12 @@ import { Apple } from "./Apple.js"
 
 export class Head {
   constructor(el, position) {
-    this.node = document.createElement("div")
+    this.node = document.createElement("img")
     this.node.setAttribute("id", "head")
+    this.node.setAttribute("src", "src/assets/snake-right.png")
+
+    // this.node = document.createElement("div")
+    // this.node.setAttribute("id", "head")
 
     el.appendChild(this.node)
 
@@ -42,15 +46,19 @@ export class Head {
     switch (true) {
       case direction === "up":
         head.style.top = `${(y -= 50)}px`
+        head.setAttribute("src", "src/assets/snake-up.png")
         break
       case direction === "right":
         head.style.left = `${(x += 50)}px`
+        head.setAttribute("src", "src/assets/snake-right.png")
         break
       case direction === "down":
         head.style.top = `${(y += 50)}px`
+        head.setAttribute("src", "src/assets/snake-down.png")
         break
       case direction === "left":
         head.style.left = `${(x -= 50)}px`
+        head.setAttribute("src", "src/assets/snake-left.png")
         break
       default:
         throw new Error("")

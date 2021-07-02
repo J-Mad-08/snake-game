@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const applePos = Math.floor((Math.random() * 700) / 50) * 50
 
-  const head = new Head(board, applePos)
   new Apple(board, applePos)
+  const head = new Head(board, applePos)
 
   body.addEventListener("keydown", (e) => {
     switch (true) {
@@ -29,6 +29,4 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error("")
     }
   })
-  console.log(head, "this head")
-  // console.log(head.style.left, "head.x")
 })
