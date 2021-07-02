@@ -1,14 +1,34 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const body = document.querySelector('body');
-  const board = document.querySelector('#board');
+import { Head } from "./Head.js"
+import { Body } from "./Body.js"
+import { Apple } from "./Apple.js"
 
-  const head = new Head(board);
-  new Apple(board);
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.querySelector("body")
+  const board = document.querySelector("#board")
 
-  body.addEventListener('keydown', (e) => {
-    if (e.code === 'ArrowLeft') {
-      console.log('pressed left');
-      head.currentDirection = 'left';
+  const applePos = Math.floor((Math.random() * 700) / 50) * 50
+
+  const head = new Head(board, applePos)
+  new Apple(board, applePos)
+
+  body.addEventListener("keydown", (e) => {
+    switch (true) {
+      case e.code === "ArrowLeft":
+        head.currentDirection = "left"
+        break
+      case e.code === "ArrowRight":
+        head.currentDirection = "right"
+        break
+      case e.code === "ArrowDown":
+        head.currentDirection = "down"
+        break
+      case e.code === "ArrowUp":
+        head.currentDirection = "up"
+        break
+      default:
+        throw new Error("")
     }
-  });
-});
+  })
+  console.log(head, "this head")
+  // console.log(head.style.left, "head.x")
+})
