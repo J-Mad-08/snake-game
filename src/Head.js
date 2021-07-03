@@ -6,9 +6,6 @@ export class Head {
     this.node.setAttribute("id", "head")
     this.node.setAttribute("src", "src/assets/snake-right.png")
 
-    // this.node = document.createElement("div")
-    // this.node.setAttribute("id", "head")
-
     el.appendChild(this.node)
 
     this.currentDirection = "right"
@@ -31,32 +28,26 @@ export class Head {
     if (x === position && y === position) {
       const appleImg = document.getElementById("apple")
       el.removeChild(appleImg)
-      // Create a new random position to place our Apple
-      let applePos = Math.floor((Math.random() * 700) / 50) * 50
-      //if next apple is on snake, call random again
-      while (x === applePos && y === applePos) {
-        applePos = Math.floor((Math.random() * 700) / 50) * 50
-      }
-      new Apple(el, applePos)
+      let apple = new Apple(el, this.x, this.y)
       // Let our Head know of the new Apple position
-      position = applePos
+      position = apple.applePos
     }
 
     // Bonus: Head shouldn't be able to go backwards
-    switch (true) {
-      case direction === "up":
+    switch (direction) {
+      case "up":
         head.style.top = `${(y -= 50)}px`
         head.setAttribute("src", "src/assets/snake-up.png")
         break
-      case direction === "right":
+      case "right":
         head.style.left = `${(x += 50)}px`
         head.setAttribute("src", "src/assets/snake-right.png")
         break
-      case direction === "down":
+      case "down":
         head.style.top = `${(y += 50)}px`
         head.setAttribute("src", "src/assets/snake-down.png")
         break
-      case direction === "left":
+      case "left":
         head.style.left = `${(x -= 50)}px`
         head.setAttribute("src", "src/assets/snake-left.png")
         break
