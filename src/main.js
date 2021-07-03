@@ -1,13 +1,15 @@
 import { Head } from "./Head.js"
-// import { Body } from "./Body.js"
+import { Body } from "./Body.js"
 import { Apple } from "./Apple.js"
 
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.querySelector("body")
   const board = document.querySelector("#board")
 
-  const head = new Head(board)
-  new Apple(board)
+  const randPos = Math.floor((Math.random() * 700) / 50) * 50
+
+  const head = new Head(board, randPos)
+  new Apple(board, randPos)
 
   body.addEventListener("keydown", (e) => {
     switch (true) {
@@ -31,4 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error("")
     }
   })
+  console.log(head, "this head")
+  // console.log(head.style.left, "head.x")
 })
