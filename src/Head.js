@@ -14,7 +14,7 @@ export class Head {
     this.node.style.top = 0
     this.node.style.left = 0
 
-    setTimeout(this.move.bind(this, el, position), this.SPEED)
+    this.move(el, position)
   }
 
   move(el, position) {
@@ -63,6 +63,7 @@ export class Head {
       this.currentDirection = "right"
     }
 
-    setTimeout(this.move.bind(this, el, position), this.SPEED)
+    // To understand this code read: https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout#the_this_problem
+    setTimeout(() => this.move(el, position), this.SPEED)
   }
 }
