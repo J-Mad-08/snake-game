@@ -4,7 +4,9 @@ import { Head } from "./Head.js"
 export class Game {
   constructor() {
     this.body = document.querySelector("body")
-    this.board = document.querySelector("#board")
+    this.board = document.createElement("div")
+    this.board.setAttribute("id", "board")
+    this.body.appendChild(this.board)
 
     let apple = new Apple(this.board)
     const head = new Head(this.board, apple.applePos)
