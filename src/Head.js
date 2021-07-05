@@ -2,8 +2,9 @@ import { Apple } from "./Apple.js";
 
 export class Head {
   constructor(el, position) {
-    this.node = document.createElement("div");
+    this.node = document.createElement("img");
     this.node.setAttribute("id", "head");
+    this.node.setAttribute("src", "src/assets/snake-right.png");
 
     el.appendChild(this.node);
 
@@ -13,7 +14,7 @@ export class Head {
     this.node.style.top = 0;
     this.node.style.left = 0;
 
-    setTimeout(this.move.bind(this, el, position), this.SPEED);
+    this.move(el, position);
   }
 
   move(el, position) {
@@ -27,30 +28,28 @@ export class Head {
     if (x === position && y === position) {
       const appleImg = document.getElementById("apple");
       el.removeChild(appleImg);
-      // Create a new random position to place our Apple
-      let randPos = Math.floor((Math.random() * 700) / 50) * 50;
-      //if next apple is on snake, call random again
-      while (x === randPos && y === randPos) {
-        randPos = Math.floor((Math.random() * 700) / 50) * 50;
-      }
-      new Apple(el, randPos);
+      let apple = new Apple(el, this.x, this.y);
       // Let our Head know of the new Apple position
-      position = randPos;
+      position = apple.applePos;
     }
 
     // Bonus: Head shouldn't be able to go backwards
-    switch (true) {
-      case direction === "up":
+    switch (direction) {
+      case "up":
         head.style.top = `${(y -= 50)}px`;
+        head.setAttribute("src", "src/assets/snake-up.png");
         break;
-      case direction === "right":
+      case "right":
         head.style.left = `${(x += 50)}px`;
+        head.setAttribute("src", "src/assets/snake-right.png");
         break;
-      case direction === "down":
+      case "down":
         head.style.top = `${(y += 50)}px`;
+        head.setAttribute("src", "src/assets/snake-down.png");
         break;
-      case direction === "left":
+      case "left":
         head.style.left = `${(x -= 50)}px`;
+        head.setAttribute("src", "src/assets/snake-left.png");
         break;
       default:
         throw new Error("");
@@ -64,6 +63,7 @@ export class Head {
       this.currentDirection = "right";
     }
 
-    setTimeout(this.move.bind(this, el, position), this.SPEED);
+    // To understand this code read: https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout#the_this_problem
+    setTimeout(() => this.move(el, position), this.SPEED);
   }
 }
