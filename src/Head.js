@@ -1,4 +1,5 @@
 import { Apple } from "./Apple.js";
+import { Body } from "./Body.js";
 
 export class Head {
   constructor(el, position) {
@@ -28,6 +29,7 @@ export class Head {
     if (x === position && y === position) {
       const appleImg = document.getElementById("apple");
       el.removeChild(appleImg);
+      //grow
       let apple = new Apple(el, this.x, this.y);
       // Let our Head know of the new Apple position
       position = apple.applePos;
@@ -64,6 +66,10 @@ export class Head {
     }
 
     // To understand this code read: https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout#the_this_problem
-    setTimeout(() => this.move(el, position), this.SPEED);
+    setTimeout(() => {
+      //console.log(this, "<- this");
+      this.move(el, position);
+    }, this.SPEED);
   }
 }
+//this.move.bind(this)
